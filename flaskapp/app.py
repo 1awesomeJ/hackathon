@@ -57,5 +57,6 @@ def to_whisper():
 
 
 if __name__ == '__main__':
-    app.run(ssl_context=('cert.pem', 'key.pem')
+    app.run(host='0.0.0.0', port=3000,
+ssl_context=('cert.pem', 'key.pem')
             )

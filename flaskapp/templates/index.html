@@ -84,9 +84,11 @@
                 </section>
                 <br><br><br><br>
                 <form class="input-section">
-                    <input type="text" maxlength="2048" size="80">
+                    <input type="text" id="input" maxlength="2048" size="80">
                     &nbsp; &nbsp;
-                    <img src="{{ url_for('static', filename='microphone-black-shape.png') }}" class="microphone" id="record-button">
+                    <button id= "record-button">
+                    <img src="{{ url_for('static', filename='microphone-black-shape.png') }}" class="microphone">
+                    </button>
                     <button id="stop-record">Stop Recording</button>
                     <div class="output" id="output">
                         {% if output %}
@@ -149,9 +151,11 @@ record.onclick = e => {
     stopRecord.disabled = false;
     audioChunks = [];
     rec.start();
-} stopRecord.onclick = e => {
+}
+
+stopRecord.onclick = e => {
     console.log("stop button clicked")
-    record.disabled = true;
+    record.disabled = false;
     record.style.backgroundColor = "red";
     rec.stop();
 }
