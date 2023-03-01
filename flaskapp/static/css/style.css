@@ -1,81 +1,306 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* Logo */
+.logo {
+  width: 200px;
+}
+/* Container styles */
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f5f5f5;
+  display: grid;
+  grid-template-areas: "a b";
 }
-
-.input {
-  display: flex;
-  align-items: center;
-  width: 80%;
-  max-width: 800px;
-  height: 50px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  padding: 0px 10px;
-  font-size: 20px;
-  color: #333;
-}
-
-.input > input {
-  flex: 1;
-  border: none;
-  outline: none;
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-  background-color: transparent;
-}
-
-.input > button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.output {
-  width: 80%;
-  max-width: 800px;
-  min-height: 50px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  font-size: 20px;
-  color: #333;
-}
-
-.btn_in {
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #007bff !im;
-  border-color: #007bff;
-  border-radius: 4px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.btn_in:hover {
-  background-color: #0069d9;
-  border-color: #0062cc;
-}
-
-#record-button {
-  display: inline-block;
-  padding: 8px 16px;
-  border-radius: 25px;
-  font-size: 18px;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #fff;
-  border: 3px solid black;
-  background-color: red;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
+/* side-menu styles */
+@keyframes slideup {
+  from {
+    transform: translateY(60%);
   }
+
+  to {
+    transform: translateY(0%);
+  }
+}
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.side-menu {
+  grid-area: a;
+  justify-content: space-between;
+  background-color: #dbf9d0;
+  position: relative;
+  height: 100vh;
+}
+.side-menu ul {
+  list-style: none;
+  margin: 0;
+  list-style-type: none;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.side-menu ul li {
+  margin: 30px 0;
+  animation-name: slideup;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-delay: 0.2s;
+  animation-iteration-count: initial;
+  animation-direction: alternate;
+}
+.side-menu ul li a {
+  color: #242424;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+}
+.side-menu ul li a :hover {
+  color: rgb(175, 54, 54);
+}
+.side-menu ul li a :active {
+  color: rgb(175, 54, 54);
+}
+.side-menu ul li a hr {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+}
+/* icon-styles */
+.home-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+.diagnosis-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+.health-centre-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+.emergency-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+.info-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+.updates-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+.dark-mode-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+hr {
+  padding: 0;
+  margin: 0;
+}
+b {
+  padding-left: 40px;
+}
+/* main content styles */
+.home-page {
+  grid-area: b;
+  background-image: linear-gradient(to bottom right, white, #9cbc90);
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+/* Main-page styles */
+h1 {
+  color: #242424;
+  padding-top: 60px;
+  padding-right: 90px;
+  font-size: 30px;
+  font-family: "Roboto", sans-serif;
+  animation-name: slideup;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-delay: 0.2s;
+  animation-iteration-count: initial;
+  animation-direction: alternate;
+}
+h2 {
+  color: #242424;
+  padding-top: 60px;
+  padding-right: 90px;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  animation-name: slideup;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-delay: 0.2s;
+  animation-iteration-count: initial;
+  animation-direction: alternate;
+}
+.home-page-text {
+  grid-area: a;
+}
+.home-page-image {
+  grid-area: b;
+  padding-left: 40px;
+  padding-bottom: 16px;
+  border-radius: 20px;
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.ai-assistant {
+  width: 400px;
+  height: 400px;
+}
+.home-page-menu {
+  display: grid;
+  grid-template-areas: "a b";
+}
+.input-btn {
+  position: relative;
+  padding: 18px;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  background-color: rgb(8, 105, 8);
+  color: white;
+  border-radius: 20px;
+  border: none;
+  animation-name: slideup;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-delay: 0.2s;
+  animation-iteration-count: initial;
+  animation-direction: alternate;
+}
+
+input {
+  height: 34px;
+  font-size: 16px;
+  flex: 100%;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  margin: 0;
+  padding-left: 30px;
+  color: rgba(0, 0, 0, 0.87);
+  word-wrap: break-word;
+  outline: none;
+}
+.output {
+  min-height: 60px;
+  font-size: 16px;
+  flex: 100%;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  margin: 0;
+  padding-left: 30px;
+  color: rgba(0, 0, 0, 0.87);
+  word-wrap: break-word;
+  outline: none;
+}
+.microphone {
+  padding-top: 6px;
+  position: fixed;
+  width: 20px;
+  height: 25px;
+  border-radius: 8px;
+}
+.plus {
+  position: absolute;
+  top: 15px;
+  left: 9px;
+  width: 25px;
+  height: 25px;
+}
+.hamburger {
+  display: none;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #000;
+  margin: 5px 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Media queries */
+/* when device goes less than 767px, changes the side-menu to hamburger*/
+@media screen and (max-width: 768px) {
+  .logo {
+    height: 70px;
+  }
+  .container {
+    grid-template-areas:
+      "a"
+      "b";
+  }
+  .side-menu {
+    display: flex;
+  }
+  .side-menu ul {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background-color: #dbf9d0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+
+  .side-menu li {
+    margin: 0;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  .home-page-menu {
+    display: grid;
+    grid-template-areas:
+      "a"
+      "b";
+  }
+}
+
+/* when device goes less than 767px, changes the side-menu to hamburger*/
+@media screen and (max-width: 767px) {
+  .logo {
+    width: 150px;
+    align-items: center;
+  }
+}
