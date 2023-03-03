@@ -267,8 +267,154 @@ input {
 }
 
 /* Media queries */
+/* to make responsive when size is below 1068px */
+@media screen and (max-width: 1068px) {
+  .container {
+    position: relative;
+    grid-template-areas: "a b";
+  }
+  .home-page {
+    align-items: center;
+    grid-area: b;
+    background-image: linear-gradient(to bottom right, white, #9cbc90);
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .home-page-menu {
+    display: grid;
+    grid-template-areas: "a b";
+  }
+  h1 {
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 15px;
+  }
+  .input-btn {
+    padding: 12px;
+    font-size: 10px;
+  }
+  .plus {
+    position: absolute;
+    top: 10px;
+    left: 8px;
+    width: 15px;
+    height: 15px;
+  }
+  input {
+    position: relative;
+  }
+  .microphone {
+    position: absolute;
+    top: 555px;
+    left: 920px;
+  }
+  .stop-recording {
+    position: absolute;
+    top: 552px;
+    left: 950px;
+  }
+  .submit {
+    position: absolute;
+    top: 557px;
+    left: 980px;
+  }
+}
 /* when device goes less than 767px, changes the side-menu to hamburger*/
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
+  .container {
+    position: relative;
+    grid-template-areas:
+      "a"
+      "b";
+  }
+  .side-menu {
+    height: 120px;
+  }
+  .side-menu ul li {
+    display: none;
+  }
+  .logo {
+    position: absolute;
+    width: 300px;
+    height: 100px;
+    top: 20px;
+    left: 40px;
+  }
+  .home-icon {
+    position: absolute;
+    top: 20px;
+    left: 200px;
+  }
+  .home-page {
+    align-items: center;
+  }
+  .home-page-menu {
+    display: grid;
+    grid-template-areas:
+      "a"
+      "b";
+  }
+  h1 {
+    text-align: center;
+    font-size: 50px;
+  }
+  h2 {
+    text-align: center;
+    font-size: 40px;
+  }
+  .ai-assistant {
+    width: 500px;
+    height: 500px;
+  }
+  .input-btn {
+    place-content: center;
+    font-size: 30px;
+    height: 90px;
+  }
+  input {
+    position: relative;
+    height: 60px;
+    width: 500px;
+  }
+  .microphone {
+    position: absolute;
+    top: 1410px;
+    width: 30px;
+    height: 30px;
+    left: 422px;
+  }
+  .stop-recording {
+    position: absolute;
+    top: 1405px;
+    left: 455px;
+    width: 40px;
+    height: 40px;
+  }
+  .submit {
+    position: absolute;
+    top: 1412px;
+    left: 500px;
+    width: 30px;
+    height: 30px;
+  }
+  .home-page-image {
+    padding-top: 40px;
+    padding-left: 50px;
+  }
+  .ai-assistant {
+    height: 600px;
+    padding-top: 5px;
+  }
+  .plus {
+    position: absolute;
+    top: 30px;
+    left: 25px;
+  }
+}
+/* when device screen is less than 735px */
+@media screen and (max-width: 735px) {
   .container {
     position: relative;
     grid-template-areas:
