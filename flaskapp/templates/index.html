@@ -5,7 +5,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{url_for('static', filename='css/style.css') }}">
-        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -103,94 +102,6 @@
                 </div>
             </div>
         </main>
-        <!--    <script src="/static/recorder.js"></script> -->
-        <script>
-            const stopRecord = document.getElementById("stop-record");
-            navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
-                handlerFunction(stream)
-            })
-            let rec;
-            function handlerFunction(stream) {
-                rec = new MediaRecorder(stream);
-                rec.ondataavailable = e => {
-                    audioChunks.push(e.data);
-                    if (rec.state == "inactive") {
-                        let blob = new Blob(audioChunks, {type: 'audio/mpeg-3'});
-                        //        recordedAudio.src =URL.createObjectURL(blob);
-                        //      recordedAudio.controls=true;
-                        //    recordedAudio.autoplay=true;
-                        sendData(blob)
-                    }
-                }
-            }
-            function sendData(blob) {
-                const formA = new FormData();
-                formA.append("audio_file", blob);
-                // const input = document.querySelector('#input').value;
-                const record = document.getElementById("record-button");
-                const stopRecord = document.getElementById("stop-record");
-
-                navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
-                    handlerFunction(stream)
-                })
-
-                let rec;
-
-                function handlerFunction(stream) {
-                    rec = new MediaRecorder(stream);
-                    rec.ondataavailable = e => {
-                        audioChunks.push(e.data);
-                        if (rec.state == "inactive") {
-                            let blob = new Blob(audioChunks, {type: 'audio/mpeg-3'});
-                            //        recordedAudio.src =URL.createObjectURL(blob);
-                            //      recordedAudio.controls=true;
-                            //    recordedAudio.autoplay=true;
-                            sendData(blob)
-                        }
-                    }
-                }
-
-                function sendData(blob) {
-                    const formA = new FormData();
-                    formA.append("audio_file", blob);
-                    // const input = document.querySelector('#input').value;
-                    fetch('/to_whisper', {
-                        method: 'POST',
-                        body: formA
-                    }).then(response => response.json()).then(data => {
-                        const diagnosis = data.response;
-                        const output = document.querySelector('#output');
-                        output.innerHTML = `<p>${diagnosis}</p>`;
-                    });
-                }
-
-                stopRecord.disabled = true;
-                stopRecord.style.backgroundColor = "brown";
-                stopRecord.style.color = "white";
-
-                record.onclick = e => {
-                    console.log("record button clicked");
-                    record.disabled = true;
-                    record.style.backgroundColor = "blue";
-                    stopRecord.disabled = false;
-                    audioChunks = [];
-                    rec.start();
-                } stopRecord.onclick = e => {
-                    console.log("stop button clicked")
-                    record.disabled = false;
-                    record.style.backgroundColor = "red";
-                    rec.stop();
-                }
-
-                const form = document.querySelector('form');
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const input = document.querySelector('#input').value;
-                    fetch('/symptom-checker?input=' + input).then(response => response.json()).then(data => {
-                        const diagnosis = data.response;
-                        const output = document.querySelector('#output');
-                        output.innerHTML = `<p>${diagnosis}</p>`;
-                    });
-                });
-
-                </script>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
