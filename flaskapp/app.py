@@ -3,6 +3,7 @@ import openai
 import os
 import requests
 
+
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
@@ -57,6 +58,6 @@ def to_whisper():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3000,
-ssl_context=('cert.pem', 'key.pem')
-            )
+    app.run(
+        ssl_context=('cert.pem', 'key.pem')
+    )
