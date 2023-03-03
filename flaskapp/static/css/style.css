@@ -222,25 +222,30 @@ input {
 .stop-recording {
   position: absolute;
   top: 505px;
-  left: 970px;
+  left: 960px;
   padding-top: 6px;
   border-radius: 8px;
 }
 .microphone {
   position: absolute;
   top: 508px;
-  left: 940px;
+  left: 930px;
   padding-top: 6px;
   width: 20px;
   height: 25px;
   border-radius: 8px;
 }
-.submit {
+.btn_in {
   position: absolute;
   top: 509px;
-  left: 1008px;
-  width: 25px;
+  left: 992px;
+  background-color: rgb(8, 105, 8);
+  border: none;
+  border-radius: 10px;
+  width: 50px;
   height: 25px;
+  color: white;
+  font-family: "Roboto", sans-serif;
 }
 .plus {
   position: absolute;
@@ -308,17 +313,17 @@ input {
   .microphone {
     position: absolute;
     top: 555px;
-    left: 920px;
+    left: 890px;
   }
   .stop-recording {
     position: absolute;
     top: 552px;
-    left: 950px;
+    left: 920px;
   }
-  .submit {
+  .btn_in {
     position: absolute;
-    top: 557px;
-    left: 980px;
+    top: 560px;
+    left: 960px;
   }
 }
 /* when device goes less than 767px, changes the side-menu to hamburger*/
@@ -383,20 +388,20 @@ input {
     top: 1410px;
     width: 30px;
     height: 30px;
-    left: 422px;
+    left: 400px;
   }
   .stop-recording {
     position: absolute;
     top: 1405px;
-    left: 455px;
+    left: 430px;
     width: 40px;
     height: 40px;
   }
-  .submit {
+  .btn_in {
     position: absolute;
     top: 1412px;
-    left: 500px;
-    width: 30px;
+    left: 480px;
+    width: 60px;
     height: 30px;
   }
   .home-page-image {
@@ -472,23 +477,23 @@ input {
   }
   .microphone {
     position: absolute;
-    top: 1452px;
+    top: 1407px;
     width: 30px;
     height: 30px;
-    left: 422px;
+    left: 400px;
   }
   .stop-recording {
     position: absolute;
-    top: 1447px;
-    left: 455px;
+    top: 1402px;
+    left: 430px;
     width: 40px;
     height: 40px;
   }
-  .submit {
+  .btn_in {
     position: absolute;
-    top: 1454px;
-    left: 500px;
-    width: 30px;
+    top: 1411px;
+    left: 480px;
+    width: 60px;
     height: 30px;
   }
   .home-page-image {
