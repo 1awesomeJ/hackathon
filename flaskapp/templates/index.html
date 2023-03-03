@@ -32,12 +32,13 @@
                         </li>
                         <li>
                             <a href="#" onclick="alert('Feature will be available soon.')">
-                                <b>Add meal plan to your calendar</b>
+                            <b> Add a meal plan to your calendar</b>
+
                             </a>
                             <img src="{{ url_for('static', filename='icons8-calendar-50.png') }}" class="health-centre-icon">
                         </li>
                         <li>
-                            <a href="#" onclick="alert('Feature will be available soon.')">
+                            <a href="#" onclick= "alert('Feature will be available soon.')">
                                 <b>Emergency</b>
                             </a>
                             <img src="{{ url_for('static', filename='telephone.png') }}" class="emergency-icon">
@@ -53,13 +54,13 @@
                             <img src="{{ url_for('static', filename='info.png') }}" class="info-icon">
                         </li>
                         <li>
-                            <a href="#" onclick="alert('Page will be available soon.')">
+                            <a href="#" onclick = "alert('Page will be available soon.')">
                                 <b>Updates and FAQs</b>
                             </a>
                             <img src="{{ url_for('static', filename='arrow-up.png') }}" class="updates-icon">
                         </li>
                         <li>
-                            <a href="#" onclick="alert('Page will be available soon.')">
+                            <a href="#" onclick= "alert('Feature will bw available soon')">
                                 <b>Dark mode</b>
                             </a>
                             <img src="{{ url_for('static', filename='moon.png') }}" class="dark-mode-icon">
@@ -91,9 +92,27 @@
                         </button>
                         <button id="stop-record"><img src="{{ url_for('static', filename='icons8-stop-circled-25.png') }}" class="stop-recording"></button>
                         <button type="submit" class="btn_in">Send</button>
+                        {% if output %}
+                            <p>
+                                {{output}}</p>
+                        {% endif %}
                     </form>
                     <br><br>
-                    <div class="output" id="output">
+                    <div class="output" id="output1">
+                        {% if output %}
+                            <p>
+                                {{output}}</p>
+                        {% endif %}
+                    </div>
+                            <br><br>
+                    <div class="output" id="output2">
+                        {% if output %}
+                            <p>
+                                {{output}}</p>
+                        {% endif %}
+                    </div>
+                            <br><br>
+                    <div class="output" id="output3">
                         {% if output %}
                             <p>
                                 {{output}}</p>
@@ -103,5 +122,5 @@
             </div>
         </main>
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    </body>
+</body>
 </html>

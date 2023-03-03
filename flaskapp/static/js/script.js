@@ -2,7 +2,10 @@ function getUserInput() {
     var userInput = alert("Please type in the input bar or use the microphone for audio input",);
 }
 
-    let output_a = document.getElementById("output");
+    let output_a = document.getElementById("output1");
+    let output_b = document.getElementById("output2");
+    let output_c = document.getElementById("output3");
+    let input_k = document.getElementById("input");
 
 function showOutput() {
     let input_a = document.getElementById("input").value;
@@ -25,9 +28,32 @@ function showOutput() {
     const input = document.querySelector('#input').value;
     fetch('/symptom-checker?input=' + input).then(response => response.json()).then(data => {
         let diagnosis = "";
+        let first = "";
+        let second = "";
+        let third = "";
         diagnosis = data.response;
-        const output = document.querySelector('#output');
-        output.innerHTML = `<p>${diagnosis}</p>`;
+        if (diagnosis.includes("MEAL PLAN")){
+        [first, second] = diagnosis.split("MEAL PLAN")
+        second = "MEAL PLAN" + second;
+        if (second.includes("EXERCISE")){
+        [second,third] = second.split("EXERCISE");
+        third = "EXERCISE" + third;
+        }
+        }
+        const output_a = document.querySelector('#output1');
+        const output_b = document.querySelector('#output2');
+        const output_c = document.querySelector('#output3');
+        if (second != "")
+        {
+        output_b.style.display = "block";
+        }
+        if (third != "")
+        {
+        output_c.style.display = "block";
+        }
+        output_a.innerHTML = `<p>${first}</p>`;
+        output_b.innerHTML = `<p>${second}</p>`;
+        output_c.innerHTML = `<p>${third}</p>`;
         diagnosis = "";
     });
 });
@@ -57,40 +83,52 @@ function showOutput() {
             body: formA
      }).then(response => response.json()).then(data => {
         let diagnosis = "";
+        let first = "";
+        let second = "";
+        let third = "";
         diagnosis = data.response;
-        const output = document.querySelector('#output');
-        output.innerHTML = `<p>${diagnosis}</p>`;
+        if (diagnosis.includes("MEAL PLAN")){
+        [first, second] = diagnosis.split("MEAL PLAN")
+        second = "MEAL PLAN" + second;
+        if (second.includes("EXERCISE")){
+        [second,third] = second.split("EXERCISE");
+        third = "EXERCISE" + third;
+        }
+        }
+        const output_a = document.querySelector('#output1');
+        const output_b = document.querySelector('#output2');
+        const output_c = document.querySelector('#output3');
+        if (second != "")
+        {
+        output_b.style.display = "block";
+        }
+        if (third != "")
+        {
+        output_c.style.display = "block";
+        }
+        output_a.innerHTML = `<p>${first}</p>`;
+        output_b.innerHTML = `<p>${second}</p>`;
+        output_c.innerHTML = `<p>${third}</p>`;
         diagnosis = "";
         });
     }
 
-function flash(message, duration) {
-    const alertEl = document.createElement('div');
-    alertEl.classList.add('alert');
-    alertEl.textContent = message;
-    document.body.appendChild(alertEl);
-    setTimeout(() => {
-        alertEl.remove();
-    }, duration);
-}
-
-
     stopRecord.disabled = true;
-    stopRecord.style.backgroundColor = "brown";
-    stopRecord.style.color = "white";
-
     record.onclick = e => {
     console.log("record button clicked");
      record.disabled = true;
      stopRecord.disabled = false;
      audioChunks = [];
+     let g= "recording...";
+     input_k.innerHTML = `<p>${g}</p>`;
      rec.start();
-      alert("You started recording, click the stop button when you're done", 2000);
-        output_a.style.display = "block";
+     output_a.style.display = "block";
 }
 
     stopRecord.onclick = e => {
     console.log("stop button clicked")
      record.disabled = false;
+     let g = "recording stopped";
+     input_k.innerHTML = `<p>${g}</p>`;
      rec.stop();
  }

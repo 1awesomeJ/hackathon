@@ -22,17 +22,11 @@ def index():
 @app.route('/symptom-checker')
 def symptom_checker():
     input = request.args.get('input')
-    response = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=f"Write detailed informattion about these symptoms, mention some of the ailments they could be indicative of, and list possible first-aid remedies: {input}.",
-        max_tokens=1800,
-        stop=None,
-        temperature=0.7,
-        top_p=1
+    response = openai.ChatCompletion.create(model = "gpt-3.5-turbo", messages=[{"role":"system", "content":"You are a health assistant, give detailed information about symptoms given by the user, your response must include: what ailments the diseases may be indicative of, possible first aid treatments, as well as a helpful mealplan or exercise routine. Leave some blank lines, write the text 'MEAL PLAN' or 'EXERCISE ROUTINE' in bold and on a new paragrapgh, then put the meal plan or exercise routhine in a 7-day table that is well formatted use the context to determine whether to give a just a meal plan, or just an exercise routine, or both"}, {"role":"user", "content":f"{input}"}]
     )
-    output_text = response.choices[0].text.strip()
+    message = response["choices"][0]["message"]["content"]
 
-    return jsonify({'response': output_text})
+    return jsonify({'response': message})
 
 
 @app.route('/to_whisper', methods=['POST'])
@@ -44,20 +38,14 @@ def to_whisper():
     files = [('audio_file', ('test.mp3', audio_data, 'audio/mpeg'))]
     response_w = requests.request("POST", url, data=payload, files=files)
     input = response_w.json()["text"]
-    response = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=f"Write detailed informattion about these symptoms, mention some of the ailments they could be indicative of, and list possible first-aid remedies: {input}.",
-        max_tokens=1800,
-        stop=None,
-        temperature=0.7,
-        top_p=1
+    response = openai.ChatCompletion.create(model = "gpt-3.5-turbo", messages=[{"role":"system", "content":"You are a health assistant, give detailed information about symptoms given by the user, your response must include: what ailments the diseases may be indicative of, possible first aid treatments, as well as a helpful mealplan or exercise routine. Leave some blank lines, write the text 'MEAL PLAN' or 'EXERCISE ROUTINE' in bold and on a new paragrapgh, then put the meal plan or exercise routhine in a 7-day table that is well formatted use the context to determine whether to give a just a meal plan, or just an exercise routine, or both"}, {"role":"user", "content":f"{input}"}]
     )
-    output_text = response.choices[0].text.strip()
+    message = response["choices"][0]["message"]["content"]
 
-    return jsonify({'response': output_text})
-
+    return jsonify({'response': message})
 
 if __name__ == '__main__':
-    app.run(
+    app.run(host='0.0.0.0',
+    port=3000,
         ssl_context=('cert.pem', 'key.pem')
     )
